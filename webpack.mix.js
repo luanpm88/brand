@@ -16,4 +16,8 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
     require('tailwindcss'),
     require('autoprefixer'),
 ])
-.sourceMaps(true, 'source-map');
+
+// Client
+mix.js('resources/client/js/app.js', 'public/client/js')
+    .postCss('resources/client/css/app.css', 'public/client/css')
+    .sourceMaps(true, 'source-map');
