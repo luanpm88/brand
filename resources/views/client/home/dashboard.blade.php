@@ -1,149 +1,74 @@
 @extends('client.layouts.main')
 @section('content')
     <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <h1 class="h2">Dashboard</h1>
-      <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group me-2">
-          <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-          <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+    <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-2">
+          {{-- <li class="breadcrumb-item"><a href="#"><span data-feather="package"></span></a></li> --}}
+          <li class="breadcrumb-item active" aria-current="page">
+            <span data-feather="shield"></span> Chào mừng thành viên
+          </li>
+        </ol>
+      </nav>
+      <h5></h5>
+    </div>
+    
+    <div class="row">
+      <div class="col-sm">
+        <div class="text-center">
+          <img style="margin:15px 0; width: 22rem" src="{{ url('image/welcome2.jpg') }}" class="" alt="...">
         </div>
-        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          This week
-        </button>
+        <p class="fs-4 display-5 text-center mx-md-5 mt-0 mb-2">Xin chào <strong>{{ Auth::user()->name }}</strong>,
+        </p>
+        <p class="fs-5 lh-base display-5 text-center mx-md-5 px-md-4 mb-5">
+          Chào mừng bạn là thành viên mới tại BrandViet.com Hãy cùng kinh doanh với chúng tôi bằng cách
+          <br>chọn 1 trong những dịch vụ phù hợp với bạn bên dưới để bắt đầu:
+        </p>
       </div>
     </div>
 
-    <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="2302" height="970" style="display: block; height: 485px; width: 1151px;"></canvas>
-
-    <h2>Section title</h2>
-    <div class="table-responsive">
-      <table class="table table-striped table-sm">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Header</th>
-            <th>Header</th>
-            <th>Header</th>
-            <th>Header</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1,001</td>
-            <td>random</td>
-            <td>data</td>
-            <td>placeholder</td>
-            <td>text</td>
-          </tr>
-          <tr>
-            <td>1,002</td>
-            <td>placeholder</td>
-            <td>irrelevant</td>
-            <td>visual</td>
-            <td>layout</td>
-          </tr>
-          <tr>
-            <td>1,003</td>
-            <td>data</td>
-            <td>rich</td>
-            <td>dashboard</td>
-            <td>tabular</td>
-          </tr>
-          <tr>
-            <td>1,003</td>
-            <td>information</td>
-            <td>placeholder</td>
-            <td>illustrative</td>
-            <td>data</td>
-          </tr>
-          <tr>
-            <td>1,004</td>
-            <td>text</td>
-            <td>random</td>
-            <td>layout</td>
-            <td>dashboard</td>
-          </tr>
-          <tr>
-            <td>1,005</td>
-            <td>dashboard</td>
-            <td>irrelevant</td>
-            <td>text</td>
-            <td>placeholder</td>
-          </tr>
-          <tr>
-            <td>1,006</td>
-            <td>dashboard</td>
-            <td>illustrative</td>
-            <td>rich</td>
-            <td>data</td>
-          </tr>
-          <tr>
-            <td>1,007</td>
-            <td>placeholder</td>
-            <td>tabular</td>
-            <td>information</td>
-            <td>irrelevant</td>
-          </tr>
-          <tr>
-            <td>1,008</td>
-            <td>random</td>
-            <td>data</td>
-            <td>placeholder</td>
-            <td>text</td>
-          </tr>
-          <tr>
-            <td>1,009</td>
-            <td>placeholder</td>
-            <td>irrelevant</td>
-            <td>visual</td>
-            <td>layout</td>
-          </tr>
-          <tr>
-            <td>1,010</td>
-            <td>data</td>
-            <td>rich</td>
-            <td>dashboard</td>
-            <td>tabular</td>
-          </tr>
-          <tr>
-            <td>1,011</td>
-            <td>information</td>
-            <td>placeholder</td>
-            <td>illustrative</td>
-            <td>data</td>
-          </tr>
-          <tr>
-            <td>1,012</td>
-            <td>text</td>
-            <td>placeholder</td>
-            <td>layout</td>
-            <td>dashboard</td>
-          </tr>
-          <tr>
-            <td>1,013</td>
-            <td>dashboard</td>
-            <td>irrelevant</td>
-            <td>text</td>
-            <td>visual</td>
-          </tr>
-          <tr>
-            <td>1,014</td>
-            <td>dashboard</td>
-            <td>illustrative</td>
-            <td>rich</td>
-            <td>data</td>
-          </tr>
-          <tr>
-            <td>1,015</td>
-            <td>random</td>
-            <td>tabular</td>
-            <td>information</td>
-            <td>text</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="mb-5 pb-5">
+      <div class="row">
+        <div class="col-sm">
+          <div class="card">
+            <img style="margin:7px 0" src="{{ url('image/website-banner2.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title display-4 fs-4 fw-normal">Tạo website của mình & Xây dựng thương hiệu</h5>
+              <p class="card-text">
+                Đăng ký tiên miền & hosting. Thiết kế website chuyên nghiệp. Đăng bán sản phẩm của chính mình ngay trên website.
+              </p>
+              <div class="d-grid gap-2">
+                <a href="javascript:;" class="btn btn-primary stretched-link">Bắt đầu ngay</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card">
+            <img src="{{ url('image/store-banner2.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title display-4 fs-4 fw-normal">Kinh doanh, quản lý sản phẩm & Liên kết sàn TMĐT</h5>
+              <p class="card-text">
+                Bán hàng trên website, Facebook, Live stream, liên kết sàn TMĐT, cửa hàng và quản lý tập trung trên BranViet.com.
+              </p>
+              <div class="d-grid gap-2">
+                <a href="javascript:;" class="btn btn-success stretched-link">Bắt đầu ngay</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card">
+            <img src="{{ url('image/store-banner.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title display-4 fs-4 fw-normal">Quản lý cửa hàng, bán hàng và giao nhận hàng</h5>
+              <p class="card-text">Tính tiền, in hóa đơn nhanh chóng, xem báo cáo bán hàng theo ngày - Quản lý bán hàng và giao hàng tập trung, đa kênh.</p>
+              <div class="d-grid gap-2">
+                <a href="javascript:;" class="btn btn-warning stretched-link">Bắt đầu ngay</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
 @endsection

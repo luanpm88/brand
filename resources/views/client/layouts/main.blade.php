@@ -178,14 +178,14 @@
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Đơn hàng
+                  <span data-feather="package"></span>
+                  Sản phẩm
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="package"></span>
-                  Sản phẩm
+                  <span data-feather="file-text"></span>
+                  Đơn hàng
                 </a>
               </li>
               <li class="nav-item">
