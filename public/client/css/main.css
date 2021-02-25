@@ -197,3 +197,30 @@ body {
   .menu-toggle-button:hover {
     color: rgba(255,255,255,1);
   }
+.nav-link-icon svg {
+  width: 20px;
+  height: 20px;
+  color: rgba(255,255,255,0.8);
+  transition: color 0.2s ease-in-out;
+}
+.nav-link-icon  {
+  position: relative;
+  padding: 16px 12px !important;
+}
+.nav-link-icon svg:hover {
+  color: rgba(255,255,255,1);
+}
+.nav-link-icon .badge {
+  position: absolute;
+  top: 6px;
+  right: 2px;
+  border-radius: 6px;
+}
+.nav-link-icon .badge.money {
+  font-weight: normal;
+  position: initial;
+  margin-left: -10px;
+  margin-top: -20px;
+  margin-right: -15px;
+  font-size: 12px;
+}

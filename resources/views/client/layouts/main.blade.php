@@ -75,7 +75,29 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <input class="form-control form-control-dark w-100 ms-1" type="text" placeholder="Gõ từ khóa tìm kiếm" aria-label="Search">
-      <ul class="navbar-nav px-3">
+      <ul class="navbar-nav px-3 flex-row">
+        <li class="nav-item">
+          <a class="nav-link active p-3 nav-link-icon notification-bell text-nowarp d-flex align-items-center" aria-current="page" href="#">
+            <span data-feather="credit-card" class="me-0"></span>
+            <span class="badge bg-secondary shadow d-block money">2,000,000 ₫</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active p-3 nav-link-icon shopping-cart" aria-current="page" href="#">
+            <span data-feather="bell" class="me-0"></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active p-3 nav-link-icon shopping-cart" aria-current="page" href="#">
+            <span data-feather="shopping-cart" class="me-0"></span>
+            <span class="badge bg-danger shadow">2</span>
+          </a>
+        </li>
+        <li class="nav-item me-2 ms-2">
+          <a class="nav-link active py-3 pe-2 text-muted" aria-current="page" href="#">
+            |
+          </a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-nowrap d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img class="me-2" style="border-radius: 100%;
@@ -118,21 +140,21 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">
                   <span data-feather="home"></span>
-                  Dashboard
+                  Tổng quan
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="file"></span>
-                  Đơn hàng
+                  <span data-feather="settings"></span>
+                  Cấu hình chung
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="shopping-cart"></span>
-                  Sản phẩm
+                  <span data-feather="at-sign"></span>
+                  Tên miền & Lưu trữ
                 </a>
-              </li>
+              </li>              
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="users"></span>
@@ -141,14 +163,62 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2"></span>
-                  Báo cáo & Thống kê
+                  <span data-feather="layout"></span>
+                  Website của bạn
+                </a>
+              </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Bán hàng</span>
+              <a class="link-secondary" href="#" aria-label="Add a new report">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Đơn hàng
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="layers"></span>
-                  Kết nối TMĐT
+                  <span data-feather="package"></span>
+                  Sản phẩm
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="shopping-bag"></span>
+                  Kết nối sàn TMĐT
+                </a>
+              </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Tài khoản</span>
+              <a class="link-secondary" href="#" aria-label="Add a new report">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="user"></span>
+                  Tài khoản & Bảo mật
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="key"></span>
+                  API Key
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="dollar-sign"></span>
+                  Ví điện tử
                 </a>
               </li>
             </ul>
@@ -169,19 +239,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="file-text"></span>
-                  Doanh thu
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Dịch vụ
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Tổng hợp
+                  Lịch sử giao dịch
                 </a>
               </li>
             </ul>
