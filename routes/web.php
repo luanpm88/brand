@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\Client\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,17 +13,20 @@ use App\Http\Controllers\Client\HomeController;
 |
 */
 
+// Default root
+Route::get('/', 'Client\HomeController@dashboard')->middleware(['auth']);
+
+// Larevel 8 default dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+// Auth routes
 require __DIR__.'/auth.php';
 
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+Route::get('auth/google', 'GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'GoogleController@handleGoogleCallback')
+    ->name('google_auth_callback');
 
-// Client
-Route::namespace('Client')->group(function () {
-    Route::get('/', [HomeController::class, 'dashboard']);
-
-});
+// Client routes
+require __DIR__.'/client.php';

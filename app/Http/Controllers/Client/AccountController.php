@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
   
-class HomeController extends Controller
+class AccountController extends Controller
 {
     /**
-     * Member dashboard.
+     * Client profile page.
      *
      * @return \Illuminate\View\View
      */
-    public function dashboard()
+    public function profile()
     {
-        return view('client.home.dashboard');
+        return view('client.account.profile');
     }
 }

@@ -18,6 +18,5 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
 ])
 
 // Client
-mix.js('resources/client/js/app.js', 'public/client/js')
-    .postCss('resources/client/css/app.css', 'public/client/css')
-    .sourceMaps(true, 'source-map');
+mix.postCss('resources/client/css/app.css', 'public/client/assets/css')
+    .js('resources/client/js/app.js', 'public/client/assets/js');
