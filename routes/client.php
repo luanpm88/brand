@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
     Route::get('/account/profile', 'AccountController@profile');
 
     // Domain
+    Route::post('/domain/confirm', 'DomainController@confirm');
     Route::get('/domain/confirm', 'DomainController@confirm');
     Route::post('/domain/check', 'DomainController@check');
 });

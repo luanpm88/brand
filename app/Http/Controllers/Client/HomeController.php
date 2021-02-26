@@ -25,8 +25,14 @@ class HomeController extends Controller
      */
     public function wizard(Request $request)
     {
-        if ($request->type == 'website') {
-            return view('client.website.domain');
+        $user = $request->user();
+
+        // @website: plan select
+        if ($user->hasDomainService()) {
+            return view('client.plans.select');
         }
+
+        // @website: domain registration
+        return view('client.website.domain');
     }
 }

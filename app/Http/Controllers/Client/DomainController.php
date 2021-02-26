@@ -22,13 +22,15 @@ class DomainController extends Controller
         ]);
         
         // check domain available
-        $validator->after(function ($validator) {
-            if (false) {
-                $validator->errors()->add(
-                    'domain', 'Tên miền đã được đăng ký sử dụng. Vui lòng chọn tên miền khác'
-                );
-            }
-        });
+        if ($request->type == 'new') {
+            $validator->after(function ($validator) {
+                if (false) {
+                    $validator->errors()->add(
+                        'domain', 'Tên miền đã được đăng ký sử dụng. Vui lòng chọn tên miền khác'
+                    );
+                }
+            });
+        }
 
         // return if domain not available
         if ($validator->fails()) {
@@ -50,8 +52,24 @@ class DomainController extends Controller
      */
     public function confirm(Request $request)
     {
-        return view('client.domains.confirm', [
-            'domain' => $request->domain,
+        $user = $request->user();
+        $domain = $request->domain;
+
+        if ($request->isMethod('post')) {
+            // add domain service
+            $user->addDomainService([
+                'domain' => $request->domain,
+                'type' => $request->type,
+            ]);
+
+            // return to wizard
+            return redirect()->action('Client\HomeController@wizard');
+        }
+
+        return view('client.domains.confirm_' . $request->type, [
+            'domain' => $domain,
+            'price' => $user->getDomainPrice($domain),
+            'type' => $request->type,
         ]);
     }
 }
