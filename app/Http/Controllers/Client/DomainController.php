@@ -1,0 +1,57 @@
+<?php
+  
+namespace App\Http\Controllers\Client;
+  
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+  
+class DomainController extends Controller
+{
+    /**
+     * Check domain is available or not for purchasing.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function check(Request $request)
+    {
+        // check domain valid
+        $validator = Validator::make($request->all(), [
+            'domain' => 'required|regex:/^(?!:\/\/)(?=.{1,255}$)((.{1,63}\.){1,127}(?![0-9]*$)[a-z0-9-]+\.?)$/i',
+        ]);
+        
+        // check domain available
+        $validator->after(function ($validator) {
+            if (false) {
+                $validator->errors()->add(
+                    'domain', 'Tên miền đã được đăng ký sử dụng. Vui lòng chọn tên miền khác'
+                );
+            }
+        });
+
+        // return if domain not available
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'error' => $validator->errors(),
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'available',
+        ]);
+    }
+
+    /**
+     * Confirm domain and process.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function confirm(Request $request)
+    {
+        return view('client.domains.confirm', [
+            'domain' => $request->domain,
+        ]);
+    }
+}

@@ -17,4 +17,16 @@ class HomeController extends Controller
     {
         return view('client.home.dashboard');
     }
+
+    /**
+     * Wizard for new member.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function wizard(Request $request)
+    {
+        if ($request->type == 'website') {
+            return view('client.website.domain');
+        }
+    }
 }

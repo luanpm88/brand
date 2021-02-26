@@ -224,3 +224,18 @@ body {
   margin-right: -15px;
   font-size: 12px;
 }
+.wizard {
+  border: solid 1px #ddd;
+  padding: 0.4rem;
+  border-radius: 5px;
+}
+.wizard .nav-link {
+  color: rgb(33, 37, 41);
+}
+.wizard.nav-pills .nav-link.active, .wizard.nav-pills .show>.nav-link {
+  background-color: #428bca;
+}
+.feather.fs-2 {
+  width: 40px;
+  height: 40px;
+}

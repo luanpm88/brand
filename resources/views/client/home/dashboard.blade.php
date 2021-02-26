@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <div class="mb-5 pb-5">
+    <div class="">
       <div class="row">
         <div class="col-sm">
           <div class="card">
@@ -38,7 +38,7 @@
                 Đăng ký tiên miền & hosting. Thiết kế website chuyên nghiệp. Đăng bán sản phẩm của chính mình ngay trên website.
               </p>
               <div class="d-grid gap-2">
-                <a href="javascript:;" class="btn btn-primary stretched-link">Bắt đầu ngay</a>
+                <a href="{{ action('Client\HomeController@wizard', ['type' => 'website']) }}" class="btn btn-primary stretched-link">Bắt đầu ngay</a>
               </div>
             </div>
           </div>

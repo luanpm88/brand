@@ -33,5 +33,5 @@ function addMaskLoading(text, callback, options) {
 }
 
 function initJs() {
-    
+    feather.replace()
 }

@@ -1,150 +1,64 @@
 class Popup {
-    constructor(url, callback, options) {
+    constructor(options) {
         var _this = this;
-        this.id = '_' + Math.random().toString(36).substr(2, 9);
-        this.options = {};
-        this.popup = $('.popup[id='+this.id+']');
-        this.loadingHtml = `<div class="popup-loading"><div class="spinner-border text-info" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div></div>`;
-        this.data = {};
-        
-        // url
-        if (typeof(url) !== 'undefined') {
-            this.url = url;
-        }
-        
-        // callback
-        if (typeof(callback) !== 'undefined') {
-            this.callback = callback;
-        }
-        
-        // options
-        if (typeof(options) !== 'undefined') {
-            this.options = options;
 
-            // data            
-            if (typeof(options.data) !== 'undefined') {
-                this.data = options.data;
-            }
-        } else {
-            this.options = {};
-        }
+        _this.id = '_' + Math.random().toString(36).substr(2, 9);
+        _this.options = options;
         
-        if (!this.popup.length) {
-            var popup = $('<div class="popup" id="'+this.id+'">').html('');
-            $('body').append(popup);
-            
-            this.popup = popup;
-            this.loading();
+        if (!$('#' + _this.id).length) {
+            $('body').append(`
+                <div class="modal fade" id="`+_this.id+`" tabindex="-1">
+                <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div></div>
+            `);
         }
-        this.popup.css('display', 'none');
-        
-        //// click outside to close
-        //$(".popup").click(function(e){
-        //    if(e.target != this) return; // only continue if the target itself has been clicked
-        //    // this section only processes if the .nav > li itself is clicked.
-        //    Popup.hide();
-        //});
 
-        // onclose popup
-        if(this.options.onclose != null) {
-            this.onclose = this.options.onclose;
-        }
+        // popup bootstrap
+        _this.popup = new bootstrap.Modal(document.getElementById(_this.id), {
+            keyboard: false
+        })
+
+        // container
+        this.container = $('#' + _this.id);
     }
     
     show() {
-        this.popup.fadeIn();
-        $('html').css('overflow', 'hidden');
+        this.popup.show();
     }
     
-    hide() {
-        this.popup.fadeOut();
-        $('html').css('overflow', 'auto');
-
-        // onclose
-        if (this.onclose != null) {
-            this.onclose();
-        }
-    }
-    
-    loading() {
-        this.popup.prepend(this.loadingHtml);
-        this.popup.addClass('popup-is-loading');
-    }
-
-    loaded() {
-        // apply js for new content
-        this.applyJs();
-        
-        // remove loading effects
-        this.popup.find('.popup-loading').remove();        
-        this.popup.removeClass('popup-is-loading');
-    }
-    
-    static hide() {
-        $('.popup').fadeOut();
-        $('html').css('overflow', 'auto');
-    }
-    
-    applyJs() {
+    load(options) {
         var _this = this;
-        
-        // init js
-        // initJs(_this.popup);
-        
-        // set back button
-        // back button
-        if (typeof(_this.back) !== 'undefined') {
-            _this.popup.find('.back').click( function() {                    
-                _this.back();
-            });
-        } else {
-            _this.popup.find('.back').click( function() {                    
-                _this.hide();
-            });
+
+        // options
+        if (typeof(options) !== 'undefined') {
+            _this.options = $.extend(_this.options, options); 
         }
         
-        // click close button
-        _this.popup.find(".close, [data-bs-dismiss=modal]").click(function(){
-            _this.hide();
-        });
-    }
-    
-    load(url, callback) {
-        var _this = this;
-        
-        if (typeof(url) !== 'undefined' && url !== null) {
-            this.url = url;
-        }
-        
-        if (typeof(callback) !== 'undefined') {
-            this.callback = callback;
-        }
-        
-        if (!_this.options.no_loading) {
-            this.loading();
-        }
-        
-        this.show();
+        _this.show();
         
         $.ajax({
-            url: _this.url,
+            url: _this.options.url,
             type: 'GET',
             dataType: 'html',
-            data: _this.data,
+            data: _this.options.data,
         }).done(function(response) {
-            _this.popup.html(response);
-            
-            if (typeof(_this.callback) !== 'undefined') {
-                _this.callback();
-            }
-            
-            // after load
-            _this.loaded();
+            _this.container.html(response);
 
-            // // apply js
-            // _this.applyJs();
+            // 
+            initJs(_this.container);
         }).fail(function(jqXHR, textStatus, errorThrown){
             // for debugging
             alert(errorThrown);
@@ -155,12 +69,6 @@ class Popup {
     loadHtml(html) {
         var _this = this;
         
-        _this.popup.html(html);
-        
-        // after load
-        _this.loaded();
-
-        // // apply js
-        // _this.applyJs();
+        _this.container.html(html);
     }
 }
