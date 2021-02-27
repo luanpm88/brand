@@ -12,7 +12,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="#">
+        <a class="nav-link" data-step="checkout" aria-current="page" href="#">
             <h4 class="fs-5 display-4 fw-normal mb-1">Bước 3</h4>
             <p class="mb-0">Thanh toán</p>
         </a>

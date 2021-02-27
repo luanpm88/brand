@@ -25,4 +25,10 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
     Route::post('/domain/confirm', 'DomainController@confirm');
     Route::get('/domain/confirm', 'DomainController@confirm');
     Route::post('/domain/check', 'DomainController@check');
+
+    // Plan
+    Route::post('/plans/add-plan', 'PlanController@addPlan');
+
+    // Template
+    Route::post('/templates/add-template', 'TemplateController@addTemplate');
 });
