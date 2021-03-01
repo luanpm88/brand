@@ -29,6 +29,9 @@
     <!-- Popup -->
     <script src="{{ asset('client/js/popup.js') }}"></script> 
 
+    <!-- Box -->
+    <script src="{{ asset('client/js/box.js') }}"></script> 
+
     <!-- Dialog -->
     <script src="{{ asset('client/js/dialog.js') }}"></script> 
 
@@ -118,7 +121,11 @@
             </span>
           </a>
           <ul class="dropdown-menu dropdown-menu-start dropdown-menu-md-end position-absolute" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#"><span data-feather="user" class="me-1"></span> Tài khoản</a></li>
+            <li>
+              <a class="dropdown-item" href="{{ action('Client\AccountController@profile') }}">
+                <span data-feather="user" class="me-1"></span> Tài khoản
+              </a>
+            </li>
             <li><a class="dropdown-item" href="#"><span data-feather="key" class="me-1"></span> Đổi mật khẩu</a></li>
             <li><a class="dropdown-item" href="#"><span data-feather="bell" class="me-1"></span> Thông báo</a></li>
             <li><a class="dropdown-item" href="#"><span data-feather="credit-card" class="me-1"></span> Thanh toán</a></li>
@@ -153,7 +160,7 @@
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+                <a class="nav-link" href="{{ action('Client\HomeController@dashboard') }}" data-name="HomeController@dashboard" aria-current="page">
                   <span data-feather="home"></span>
                   Tổng quan
                 </a>
@@ -192,7 +199,7 @@
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" data-name="ProductController@index" href="{{ action('Client\ProductController@index') }}">
                   <span data-feather="package"></span>
                   Sản phẩm
                 </a>
@@ -201,6 +208,21 @@
                 <a class="nav-link" href="#">
                   <span data-feather="file-text"></span>
                   Đơn hàng
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ action('Client\MessageController@index') }}">
+                  <svg class="me-1" style="width:17px;height:17px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 800 800">
+                    <radialGradient id="Gradient" cx="101.925" cy="809.0079" r="1.0896" gradientTransform="matrix(800 0 0 -799.9985 -81386 648000.75)" gradientUnits="userSpaceOnUse">
+                     <stop offset="0" style="stop-color:#0099FF"/>
+                     <stop offset="0.6098" style="stop-color:#A033FF"/>
+                     <stop offset="0.9348" style="stop-color:#FF5280"/>
+                     <stop offset="1" style="stop-color:#FF7061"/>
+                    </radialGradient>
+                    <path fill="url(#Gradient)" d="M400,0C174.7,0,0,165.1,0,388c0,116.6,47.8,217.4,125.6,287c6.5,5.8,10.5,14,10.7,22.8l2.2,71.2  c0.7,22.7,24.1,37.5,44.9,28.3l79.4-35c6.7-3,14.3-3.5,21.4-1.6c36.5,10,75.3,15.4,115.8,15.4c225.3,0,400-165.1,400-388  S625.3,0,400,0z"/>
+                    <path fill="#FFFFFF" d="M159.8,501.5l117.5-186.4c18.7-29.7,58.7-37,86.8-16l93.5,70.1c8.6,6.4,20.4,6.4,28.9-0.1    l126.2-95.8c16.8-12.8,38.8,7.4,27.6,25.3L522.7,484.9c-18.7,29.7-58.7,37-86.8,16l-93.5-70.1c-8.6-6.4-20.4-6.4-28.9,0.1    l-126.2,95.8C170.5,539.5,148.5,519.4,159.8,501.5z"/>
+                   </svg>
+                  Messenger
                 </a>
               </li>
               <li class="nav-item">
@@ -260,6 +282,11 @@
             </ul>
           </div>
         </nav>
+        <script>
+          ready(function() {
+            $('[data-name="{{ App\Helpers\General::controllerAction() }}"]').addClass('active');
+          });
+        </script>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mb-5 pb-5">
           @include('client.commons.flash')
@@ -289,13 +316,5 @@
         </div>
       </div>
     </div>
-    <script>
-        // var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
-        //   keyboard: false
-        // })
-        // myModal.toggle();
-
-        
-    </script>
   </body>
 </html>

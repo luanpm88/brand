@@ -43,6 +43,8 @@ class GoogleController extends Controller
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
+                    'first_name' => $user->user['given_name'],
+                    'last_name' => $user->user['family_name'],
                     'google_id'=> $user->id,
                     'google_avatar'=> $user->avatar,
                     'password' => encrypt('123456dummy')

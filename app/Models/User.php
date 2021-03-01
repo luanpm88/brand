@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 use App\models\Service;
 use App\models\Payment;
+use App\Library\Facebook\Messenger;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
         'google_id',
@@ -52,6 +55,22 @@ class User extends Authenticatable
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+    /**
+     * Get user payment.
+     */
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    /**
+     * Get user connections.
+     */
+    public function userConnections()
+    {
+    	return $this->hasmany('App\Models\UserConnection');
     }
 
     /**
@@ -377,6 +396,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Check user has pending service.
+     *
+     * @var float
+     */
+    public function hasPendingPayment()
+    {
+        return $this->payments()->where('status', '=', Payment::STATUS_PENDING)->count();
+    }
+
+    /**
      * Add payment for new services.
      *
      * @var float
@@ -386,8 +415,142 @@ class User extends Authenticatable
         // new service
         $payment = new Payment();
         $payment->user_id = $this->id;
+
+        // services
+        $services = $this->services()->where('status', '=', Service::STATUS_PENDING);
         
         // services
-        $services = $user->services()->where('status', '=', Service::STATUS_PENDING);
+        $service_ids = $services->get()
+            ->map(function ($payment) {
+                return $payment->id;
+            })->toArray();
+        
+        // price
+        $payment->price = $this->services()
+            ->where('status', '=', Service::STATUS_PENDING)
+            ->sum('price');
+
+        // status = pending
+        $payment->status = Payment::STATUS_PENDING;
+
+        $payment->updateMetadata([
+            'service_ids' => $service_ids,
+        ]);
+    }
+
+    /**
+     * Check user has plan.
+     *
+     * @var boolean
+     */
+    public function hasActivePlan()
+    {
+        return $this->services()
+            ->where('type', '=', Service::TYPE_PLAN)
+            ->where('status', '=', Service::STATUS_ACTIVE)
+            ->count();
+    }
+
+    /**
+     * Get current plan.
+     *
+     * @var boolean
+     */
+    public function getCurrentPlan()
+    {
+        return $this->services()
+            ->where('type', '=', Service::TYPE_PLAN)
+            ->where('status', '=', Service::STATUS_ACTIVE)
+            ->orderBy('created_at', 'desc')
+            ->first();
+    }
+
+    /**
+     * Get current template.
+     *
+     * @var boolean
+     */
+    public function getCurrentTemplate()
+    {
+        return $this->services()
+            ->where('type', '=', Service::TYPE_TEMPLATE)
+            ->where('status', '=', Service::STATUS_ACTIVE)
+            ->orderBy('created_at', 'desc')
+            ->first();
+    }
+
+    /**
+     * Get current domain.
+     *
+     * @var boolean
+     */
+    public function getCurrentDomain()
+    {
+        return $this->services()
+            ->where('type', '=', Service::TYPE_DOMAIN)
+            ->where('status', '=', Service::STATUS_ACTIVE)
+            ->orderBy('created_at', 'desc')
+            ->first();
+    }
+
+    /**
+     * Get current domain.
+     *
+     * @var boolean
+     */
+    public function getCurrentDomainName()
+    {
+        return $this->getCurrentDomain()->getMetadata()['domain'];
+    }
+
+    /**
+     * Get current template name.
+     *
+     * @var boolean
+     */
+    public function getCurrentTemplateName()
+    {
+        return $this->getCurrentTemplate()->getMetadata()['template'];
+    }
+
+    /**
+     * Get current plan name.
+     *
+     * @var boolean
+     */
+    public function getCurrentPlanName()
+    {
+        return $this->getCurrentPlan()->getMetadata()['plan'];
+    }
+
+    /**
+     * Get user connections.
+     *
+     * @var boolean
+     */
+    public function getUserConnection($type)
+    {
+        $connection = $this->userConnections()
+            ->where('type', '=', $type)
+            ->first();
+
+        if (!$connection) {
+            $connection = new UserConnection();
+            $connection->user_id = $this->id;
+            $connection->type = $type;
+        }
+
+        return $connection;
+    }
+
+    /**
+     * FB: get messenger.
+     *
+     * @var object | collect
+     */
+    public function messenger()
+    {
+        // return messenger
+        return new Messenger($this->getMetadata()['facebook']['authResponse']['accessToken']);
     }
 }

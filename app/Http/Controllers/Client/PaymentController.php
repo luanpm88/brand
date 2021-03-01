@@ -24,7 +24,7 @@ class PaymentController extends Controller
         ]);
 
         // create new payment transaction
-        $user->addPaymentForNewService($user->services()->where('status', '=', Service::STATUS_PENDING));
+        $user->addPaymentForNewServices($user->services()->where('status', '=', Service::STATUS_PENDING));
 
         switch ($request->payment) {
             case 'bank':

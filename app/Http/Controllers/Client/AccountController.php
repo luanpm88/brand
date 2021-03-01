@@ -13,8 +13,22 @@ class AccountController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function profile()
+    public function profile(Request $request)
     {
-        return view('client.account.profile');
+        return view('client.account.profile', [
+            'user' => $request->user(),
+        ]);
+    }
+
+    /**
+     * Client brand page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function brand(Request $request)
+    {
+        return view('client.account.brand', [
+            'user' => $request->user(),
+        ]);
     }
 }

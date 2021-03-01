@@ -277,3 +277,19 @@ body {
   color: inherit;
   border-color: rgb(53, 111, 150);;
 }
+.summary-template-image {
+  width: 120px;
+  overflow: hidden;
+  height: 150px;
+  border: solid 1px #aaa;
+  border-radius: 3px;
+}
+.summary-template-image img {
+  width: 100%;
+}
+.user-profile-photo img {
+  border-radius: 100%;
+}
+.breadcrumb a {
+  text-decoration: none;
+}

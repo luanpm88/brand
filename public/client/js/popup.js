@@ -15,11 +15,11 @@ class Popup {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="text-center">
+                <div class="spinner-border text-success my-4" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
           </div>
         </div>
       </div></div>
@@ -37,6 +37,10 @@ class Popup {
     
     show() {
         this.popup.show();
+    }
+
+    hide() {
+        this.popup.hide();
     }
     
     load(options) {

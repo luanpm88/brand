@@ -33,5 +33,11 @@ function addMaskLoading(text, callback, options) {
 }
 
 function initJs() {
-    feather.replace()
+    feather.replace();
 }
+
+function ready(method) {
+    window.addEventListener("DOMContentLoaded", function(){
+      method();
+    });
+  };

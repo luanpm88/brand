@@ -14,9 +14,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function dashboard()
+    public function dashboard(Request $request)
     {
-        return view('client.home.dashboard');
+        $user = $request->user();
+
+        if ($user->hasActivePlan()) {
+            return view('client.home.dashboard');
+        } else {
+            return view('client.home.welcome');
+        }
     }
 
     /**
@@ -38,8 +44,14 @@ class HomeController extends Controller
             return redirect()->action('Client\HomeController@wizard');
         }
 
+        // @website: user has plan
+        if ($user->hasActivePlan()) {
+            // redirect to wizard
+            return redirect()->action('Client\HomeController@dashboard');
+        }
+
         // @website: have pending payment
-        if ($user->hasPendingService()) {
+        if ($user->hasPendingPayment()) {
             return view('client.payments.bank', [
                 'services' => $user->services()->where('status', '=', Service::STATUS_PENDING)->get(),
                 'total' => $user->services()->where('status', '=', Service::STATUS_PENDING)->sum('price'),

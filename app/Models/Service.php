@@ -10,6 +10,7 @@ class Service extends Model
 {
     const STATUS_NEW = 'new';
     const STATUS_PENDING = 'pending';
+    const STATUS_ACTIVE = 'active';
 
     const TYPE_DOMAIN = 'domain';
     const TYPE_PLAN = 'plan';
