@@ -33,13 +33,19 @@
           <div class="card">
             <img style="margin:7px 0" src="{{ url('image/website-banner2.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title display-4 fs-4 fw-normal">Tạo website của mình & Xây dựng thương hiệu</h5>
-              <p class="card-text">
-                Đăng ký tiên miền & hosting. Thiết kế website chuyên nghiệp. Đăng bán sản phẩm của chính mình ngay trên website.
-              </p>
-              <div class="d-grid gap-2">
-                <a href="{{ action('Client\HomeController@wizard', ['type' => 'website']) }}" class="btn btn-primary stretched-link">Bắt đầu ngay</a>
-              </div>
+              <form class="new-domain-form" method="POST" action="{{ action('Client\HomeController@wizard') }}">
+                @csrf
+
+                <input type="hidden" name="wizard" value="website" />
+
+                <h5 class="card-title display-4 fs-4 fw-normal">Tạo website của mình & Xây dựng thương hiệu</h5>
+                <p class="card-text">
+                  Đăng ký tiên miền & hosting. Thiết kế website chuyên nghiệp. Đăng bán sản phẩm của chính mình ngay trên website.
+                </p>
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-primary select-wizard">Bắt đầu ngay</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -71,4 +77,13 @@
         </div>
       </div>
     </div>
+
+    <script>
+      ready(function() {
+        sss;
+        $('.select-wizard').on(function(e) {
+          e.prevenDefault();
+        });
+      });
+    </script>
 @endsection

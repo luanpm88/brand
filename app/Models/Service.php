@@ -9,6 +9,7 @@ use App\Models\User;
 class Service extends Model
 {
     const STATUS_NEW = 'new';
+    const STATUS_PENDING = 'pending';
 
     const TYPE_DOMAIN = 'domain';
     const TYPE_PLAN = 'plan';

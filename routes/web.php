@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Default root
-Route::get('/', 'Client\HomeController@dashboard')->middleware(['auth']);
+Route::get('/', 'Client\HomeController@dashboard')->middleware(['auth', 'client']);
 
 // Larevel 8 default dashboard
 Route::get('/dashboard', function () {

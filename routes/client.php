@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['auth']], function () {
+Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['auth', 'client']], function () {
     // Dashboard
     Route::get('/dashboard', 'HomeController@dashboard');
+    Route::post('/wizad', 'HomeController@wizard');
     Route::get('/wizad', 'HomeController@wizard');
 
     // Account
@@ -31,4 +32,9 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
 
     // Template
     Route::post('/templates/add-template', 'TemplateController@addTemplate');
+
+    // Payment
+    Route::post('/payment/cancel', 'PaymentController@cancel');
+    Route::post('/payment/pay', 'PaymentController@pay');
+    Route::post('/payment/checkout', 'PaymentController@checkout');
 });

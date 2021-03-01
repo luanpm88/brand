@@ -28,6 +28,24 @@ class HomeController extends Controller
     {
         $user = $request->user();
 
+        // save wizard
+        if ($request->isMethod('post')) {
+            $user->updateMetadata([
+                'wizard' => 'website',
+            ]);
+
+            // redirect to wizard
+            return redirect()->action('Client\HomeController@wizard');
+        }
+
+        // @website: have pending payment
+        if ($user->hasPendingService()) {
+            return view('client.payments.bank', [
+                'services' => $user->services()->where('status', '=', Service::STATUS_PENDING)->get(),
+                'total' => $user->services()->where('status', '=', Service::STATUS_PENDING)->sum('price'),
+            ]);
+        }
+
         // @website: billing page
         if ($user->hasTemplateService() && $user->hasPlanService() && $user->hasDomainService()) {
             return view('client.services.checkout', [

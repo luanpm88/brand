@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 use App\models\Service;
+use App\models\Payment;
 
 class User extends Authenticatable
 {
@@ -51,6 +52,33 @@ class User extends Authenticatable
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+    /**
+     * Get data.
+     *
+     * @var object | collect
+     */
+    public function getMetadata()
+    {
+        if (!$this['metadata']) {
+            return json_decode('{}', true);
+        }
+
+        return json_decode($this['metadata'], true);
+    }
+
+    /**
+     * Update data.
+     *
+     * @var object | collect
+     */
+    public function updateMetadata($data)
+    {
+        $data = (object) array_merge((array) $this->getMetadata(), $data);
+        $this['metadata'] = json_encode($data);
+
+        $this->save();
     }
 
     /**
@@ -326,5 +354,40 @@ class User extends Authenticatable
                 return $template;
             }
         }
+    }
+
+    /**
+     * Check user wizard.
+     *
+     * @var float
+     */
+    public function hasWizard()
+    {
+        return isset($this->getMetadata()['wizard']);
+    }
+
+    /**
+     * Check user has pending service.
+     *
+     * @var float
+     */
+    public function hasPendingService()
+    {
+        return $this->services()->where('status', '=', Service::STATUS_PENDING)->count();
+    }
+
+    /**
+     * Add payment for new services.
+     *
+     * @var float
+     */
+    public function addPaymentForNewServices()
+    {
+        // new service
+        $payment = new Payment();
+        $payment->user_id = $this->id;
+        
+        // services
+        $services = $user->services()->where('status', '=', Service::STATUS_PENDING);
     }
 }
