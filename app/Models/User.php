@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notifiable;
 
 use App\models\Service;
 use App\models\Payment;
+use App\models\Province;
+use App\models\District;
+use App\models\Ward;
 use App\Library\Facebook\Messenger;
 
 class User extends Authenticatable
@@ -28,6 +31,10 @@ class User extends Authenticatable
         'password',
         'google_id',
         'google_avatar',
+        'address',
+        'province_id',
+        'district_id',
+        'ward_id',
     ];
 
     /**
@@ -55,6 +62,30 @@ class User extends Authenticatable
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+    /**
+     * Get user province.
+     */
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
+
+    /**
+     * Get user district.
+     */
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+
+    /**
+     * Get user province.
+     */
+    public function ward()
+    {
+        return $this->belongsTo(Ward::class);
     }
 
     /**
@@ -552,5 +583,61 @@ class User extends Authenticatable
     {
         // return messenger
         return new Messenger($this->getMetadata()['facebook']['authResponse']['accessToken']);
+    }
+
+    /**
+     * add picture from google avatar.
+     *
+     * @var object | collect
+     */
+    public function updatePictureFromUrl($url)
+    {
+        // create user folder if not exist
+        if(!\File::isDirectory(storage_path("app/user"))) {
+            \File::makeDirectory(storage_path("app/user"), 0777, true, true);
+        }
+
+        // create user folder if not exist
+        if(!\File::isDirectory(storage_path("app/user/{$this->id}"))) {
+            \File::makeDirectory(storage_path("app/user/{$this->id}"), 0777, true, true);
+        }
+
+        if ($url) {
+            copy($url, $this->getPicturePath());
+        }
+    }
+
+    /**
+     * Get picture path.
+     *
+     * @var string
+     */
+    public function getPicturePath()
+    {
+        return storage_path("app/user/{$this->id}/picture");
+    }
+
+    /**
+     * get user picture.
+     *
+     * @var string
+     */
+    public function getPicture()
+    {
+        if(!\File::isDirectory($this->getPicturePath())) {
+            return $this->getPicturePath();
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * get user name.
+     *
+     * @var string
+     */
+    public function getName()
+    {
+        return $this->first_name . " " . $this->last_name;
     }
 }

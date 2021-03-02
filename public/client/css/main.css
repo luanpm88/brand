@@ -293,3 +293,12 @@ body {
 .breadcrumb a {
   text-decoration: none;
 }
+.user-picture-box {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+}
+.user-picture-box img {
+  width: 100%;
+  height: 100%;
+}

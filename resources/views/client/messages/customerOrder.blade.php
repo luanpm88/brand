@@ -75,9 +75,11 @@
   <div class="section">
     <h5 class="header">Giao hàng</h5>
 
-    <div class="custom-control custom-checkbox mb-4 pl-4 ms-3">
-      <input type="checkbox" class="custom-control-input" id="same-address">
-      <label class="custom-control-label" for="same-address">Địa chỉ giao hàng giống với địa chỉ liên hệ</label>
+    <div class="form-check mx-3 mb-2">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        Địa chỉ giao hàng giống với địa chỉ liên hệ
+      </label>
     </div>
 
     <div class="mb-3 px-3">
@@ -92,7 +94,7 @@
       <div class="row px-0 order-shipping-area-select">
         <div class="col-md-4 mb-3">
           <label for="province">Tỉnh/Thành</label>
-          <select name="province_id" class="custom-select d-block w-100" id="country" required="">
+          <select name="province_id" class="form-select d-block w-100" id="country" required="">
             <option value="">Chọn...</option>
             @foreach(App\Models\Province::all() as $province)
               <option value="{{ $province->id }}">{{ $province->name }}</option>
@@ -105,7 +107,7 @@
         <div class="col-md-4 mb-3">
           <label for="state">Quận/Huyện</label>
           <div class="districts-box">
-            <select name="district_id" class="custom-select d-block w-100" id="state" required="">
+            <select name="district_id" class="form-select d-block w-100" id="state" required="">
               <option value="">Chọn...</option>
             </select>
           </div>
@@ -116,7 +118,7 @@
         <div class="col-md-4 mb-3">
           <label for="zip">Phường/Xã</label>
           <div class="wards-box">
-            <select name="ward_id" class="custom-select d-block w-100" id="state" required="">
+            <select name="ward_id" class="form-select d-block w-100" id="state" required="">
               <option value="">Chọn...</option>
             </select>
           </div>

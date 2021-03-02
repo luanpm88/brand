@@ -8,13 +8,13 @@
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="order-tab" data-bs-toggle="tab" data-bs-target="#order" type="button" role="tab" aria-controls="home" aria-selected="true">
-          Khách hàng
+          Đơn hàng
         </button>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        <div class="row mt-4 mx-0">
+        <div class="row pt-4 bg-white mx-0">
           <div class="col-md-12 order-md-1 pb-3">
             <div class="d-flex align-items-center sidebar-contact">
                 <img class="avatar" src="{{ $contact->picture }}" />
@@ -85,7 +85,7 @@
               <div class="row">
                 <div class="col-md-4 mb-3">
                   <label for="country">Quốc gia</label>
-                  <select class="custom-select d-block w-100" id="country" required="">
+                  <select class="form-select d-block w-100" id="country" required="">
                     <option value="">Chọn...</option>
                     <option value="vn" selected>Việt Nam</option>
                   </select>
@@ -95,7 +95,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="state">Tỉnh/Thành</label>
-                  <select class="custom-select d-block w-100" id="state" required="">
+                  <select class="form-select d-block w-100" id="state" required="">
                     <option value="">Chọn...</option>
                     <option>TP. Hồ Chí Minh</option>
                   </select>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="zip">Quận/Huyện</label>
-                  <select class="custom-select d-block w-100" id="state" required="">
+                  <select class="form-select d-block w-100" id="state" required="">
                     <option value="">Chọn...</option>
                     <option>Quận Gò Vấp</option>
                   </select>
@@ -115,15 +115,19 @@
                 </div>
               </div>
               <hr class="mb-4">
-              
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="same-address">
-                <label class="custom-control-label" for="same-address">Địa chỉ giao hàng giống với địa chỉ liên hệ</label>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Địa chỉ giao hàng giống với địa chỉ liên hệ
+                </label>
               </div>
-  
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="save-info">
-                <label class="custom-control-label" for="save-info">Đồng bộ thông tin theo Facebook</label>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Đồng bộ thông tin theo Facebook
+                </label>
               </div>
               
               <hr class="mb-4">
@@ -135,7 +139,7 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="order" role="tabpanel" aria-labelledby="order-tab">
+      <div class="tab-pane fade bg-white" id="order" role="tabpanel" aria-labelledby="order-tab">
         <div class="order-container mb-4 pt-3">
           <div class="m-5 text-center">
             <div class="spinner-border text-info" role="status">

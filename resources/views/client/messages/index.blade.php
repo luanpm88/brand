@@ -428,31 +428,33 @@
 
     
     <script>
-        Echo.private('Messenger')
-        .listen('MessengerNotification', (e) => {
-            console.log('upcoming notification (raw):');
-            console.log(e);
+        ready(function() {
+            Echo.private('Messenger')
+            .listen('MessengerNotification', (e) => {
+                console.log('upcoming notification (raw):');
+                console.log(e);
 
-            // get conversation data from webhook
-            var m = e.data;
+                // get conversation data from webhook
+                var m = e.data;
 
-            // e.data.forEach(function(m) {
-            console.log('upcoming notification:');
-            console.log(m);
+                // e.data.forEach(function(m) {
+                console.log('upcoming notification:');
+                console.log(m);
 
-            // check sender is in conversation
-            if (messenger.currentConversation && (messenger.currentConversation.to == m.sender.id || messenger.currentConversation.to == m.recipient.id)) {
-                messenger.appendMessage(m.message.text, m.sender.id, m.recipient.id);
-            }
+                // check sender is in conversation
+                if (messenger.currentConversation && (messenger.currentConversation.to == m.sender.id || messenger.currentConversation.to == m.recipient.id)) {
+                    messenger.appendMessage(m.message.text, m.sender.id, m.recipient.id);
+                }
 
-            // scroll to bottom
-            messenger.scrollChatboxBottom()
-            
-            // reload conversations list
-            messenger.loadConversations(function() {
-                // add active
-                $('.conversation[data-id="'+messenger.currentConversationId+'"]').addClass('active');
+                // scroll to bottom
+                messenger.scrollChatboxBottom()
+                
+                // reload conversations list
+                messenger.loadConversations(function() {
+                    // add active
+                    $('.conversation[data-id="'+messenger.currentConversationId+'"]').addClass('active');
+                });
             });
-        });
+        });            
     </script>
 @endsection

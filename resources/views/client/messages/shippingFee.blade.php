@@ -12,7 +12,7 @@
             <input class="form-control" type="radio" name="shipping_method" value="{{ $fee['total'] }}" />
           </td>
           <td class="p-2">
-            <img style="width:120px" src="{{ url('/images/ghn_logo.png') }}" />
+            <img style="width:120px" src="{{ url('/image/ghn_logo.png') }}" />
           </td>
           <td class="text-right text-nowrap">{{ App\Library\Currency::formatPrice($fee['total']) }}</td>
         </tr>

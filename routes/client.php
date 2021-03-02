@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Messenger webhook
+Route::get('/facebook/webhooks', 'Client\MessageController@webhooks');
+Route::post('/facebook/webhooks', 'Client\MessageController@webhooks');
+
 Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['auth', 'client']], function () {
     // Dashboard
     Route::get('/dashboard', 'HomeController@dashboard');
@@ -21,6 +25,7 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
 
     // Account
 	Route::get('/account/brand', 'AccountController@brand');
+	Route::post('/account/profile', 'AccountController@profile');
     Route::get('/account/profile', 'AccountController@profile');
 
     // Domain
@@ -75,4 +80,7 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
 	Route::post('messages/save-token', 'MessageController@saveToken');
 	Route::get('messages/connect', 'MessageController@connect');
 	Route::get('messages', 'MessageController@index');
+
+	// User
+	Route::get('/user/{id}/picture', 'UserController@picture');
 });

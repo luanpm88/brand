@@ -49,6 +49,8 @@ class GoogleController extends Controller
                     'google_avatar'=> $user->avatar,
                     'password' => encrypt('123456dummy')
                 ]);
+
+                $newUser->updatePictureFromUrl($user->avatar_original);
       
                 Auth::login($newUser);
       
