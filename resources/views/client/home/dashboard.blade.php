@@ -94,11 +94,11 @@
               @include('client.plans.features', Auth::user()->getPlan(Auth::user()->getCurrentPlanName())['features'])
             </div>
             <div class="mt-3">
-              <a href="#" class="btn btn-primary me-1">
+              <a href="#" class="btn btn-primary me-1 coming_soon">
                 <span data-feather="clock" class="float-left me-1"></span>
                 Gia hạn
               </a>
-              <a href="#" class="btn btn-secondary">
+              <a href="#" class="btn btn-secondary coming_soon">
                 <span data-feather="refresh-ccw" class="float-left me-1"></span>
                 Chuyển đổi gói dịch vụ
               </a>
@@ -178,6 +178,8 @@
                     </div>
                   </li>
                 </ul>
+                {{-- <hr> --}}
+                <a href="{{ action('Client\WebsiteController@index') }}" class="btn btn-secondary mt-3">Xem chi tiết</a>
               </div>
             </div>
           </div>
@@ -191,7 +193,7 @@
             <h5 class="card-title fw-normal">Tên miền: <strong>{{ Auth::user()->getCurrentDomainName() }}</strong></h5>
             <p class="card-text">Gói dịch vụ đang được sử dụng. Còn <span class="fw-bold text-success">{{ Auth::user()->getCurrentDomain()->created_at->addYearsNoOverflow(1)->diffInDays(\Carbon\Carbon::now()) }}</span> ngày nữa là hết hạn.
               Thời hạn sử dụng đến ngày <span class="fw-bold text-danger">{{ Auth::user()->getCurrentDomain()->created_at->addYearsNoOverflow(1)->format('Y-m-d') }}</span></p>
-            <a href="#" class="btn btn-secondary">Quản lý tên miền</a>
+              <a href="{{ action('Client\DomainController@index') }}" class="btn btn-secondary">Quản lý tên miền</a>
           </div>
         </div>
       </div>
