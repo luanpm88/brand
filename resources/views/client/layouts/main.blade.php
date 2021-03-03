@@ -105,18 +105,18 @@
       <input class="form-control form-control-dark w-100 ms-1" type="text" placeholder="Gõ từ khóa tìm kiếm" aria-label="Search">
       <ul class="navbar-nav px-3 flex-row">
         <li class="nav-item">
-          <a class="nav-link active p-3 nav-link-icon notification-bell text-nowarp d-flex align-items-center" aria-current="page" href="#">
+          <a class="nav-link active p-3 nav-link-icon notification-bell text-nowarp d-flex align-items-center coming_soon" aria-current="page" href="#">
             <span data-feather="credit-card" class="me-0"></span>
             <span class="badge bg-secondary shadow d-block money">2,000,000 ₫</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active p-3 nav-link-icon shopping-cart" aria-current="page" href="#">
+          <a class="nav-link active p-3 nav-link-icon shopping-cart coming_soon" aria-current="page" href="#">
             <span data-feather="bell" class="me-0"></span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active p-3 nav-link-icon shopping-cart" aria-current="page" href="#">
+          <a class="nav-link active p-3 nav-link-icon shopping-cart coming_soon" aria-current="page" href="#">
             <span data-feather="shopping-cart" class="me-0"></span>
             <span class="badge bg-danger shadow">2</span>
           </a>

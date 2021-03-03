@@ -69,7 +69,7 @@
                 Hiện danh bạ của bạn mới khởi tạo. Hãy liên kết và kết nối danh bạ Khách hàng tiềm năng
               </p>
               <div class="d-grid gap-2">
-                <a href="javascript:;" class="btn btn-warning stretched-link">Khách hàng của bạn</a>
+                <a href="javascript:;" class="btn btn-warning stretched-link coming_soon">Khách hàng của bạn</a>
               </div>
             </div>
           </div>
