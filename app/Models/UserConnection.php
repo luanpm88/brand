@@ -53,6 +53,11 @@ class UserConnection extends Model
         $data = $this->service()->getProducts(['offset' => 0, 'limit' => 1])['data'];
         $total = $data['total_products'];
 
+        // create product images folder if not exist
+        if(!\File::isDirectory(storage_path("app/products"))) {
+            \File::makeDirectory(storage_path("app/products"), 0777, true, true);
+        }
+
         // starting
         $this->updateData([
             'sync' => [
