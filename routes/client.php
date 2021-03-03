@@ -85,7 +85,7 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
 	// Route::get('messages', 'MessageController@index');
 
 	// // User
-	// Route::get('/user/{id}/picture', 'UserController@picture');
+	Route::get('/user/{id}/picture', 'UserController@picture');
 });
 
 Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['auth', 'client', 'checkPlan']], function () {
@@ -158,5 +158,5 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
 	Route::get('messages', 'MessageController@index');
 
 	// User
-	Route::get('/user/{id}/picture', 'UserController@picture');
+	// Route::get('/user/{id}/picture', 'UserController@picture');
 });
