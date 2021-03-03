@@ -60,6 +60,10 @@
         <form method="POST" action="{{ action('Client\PaymentController@cancel') }}" class="needs-validation" novalidate="">
             @csrf
             <button type="button" class="btn btn-danger payment-cancel">Hủy đăng ký</button>
+
+            <a href="{{ action('Client\HomeController@approveTest') }}" class="btn btn-link text-decoration-none">
+                Admin Test: Hoàn thành thanh toán
+            </a>
         </form>
     </div>
 

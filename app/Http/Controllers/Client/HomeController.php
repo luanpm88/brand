@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Service;
+use App\Models\Payment;
   
 class HomeController extends Controller
 {
@@ -93,4 +94,19 @@ class HomeController extends Controller
 
         return view('client.home.welcome');
     }
+
+    /**
+     * Approve test.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function approveTest(Request $request)
+    {
+        $user = $request->user();
+
+        $payment = $user->payments()->where('status', '=', Payment::STATUS_PENDING)->first();
+        $payment->payAndApprove();
+
+        return redirect()->action('Client\HomeController@wizard');
+    }   
 }

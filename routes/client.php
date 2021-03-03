@@ -23,6 +23,7 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
     // Route::get('/dashboard', 'HomeController@dashboard');
     Route::post('/wizad', 'HomeController@wizard');
     Route::get('/wizad', 'HomeController@wizard');
+	Route::get('/admin/approve-test', 'HomeController@approveTest');
 
     // // Account
 	// Route::get('/account/brand', 'AccountController@brand');
