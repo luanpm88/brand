@@ -1,7 +1,7 @@
 <div class="lazadaSyncHeader">
     @if (isset($lazadaConnection->getData()['sync']))
         @if (!in_array($lazadaConnection->getData()['sync']['status'], ['done', 'closed']))
-            <div class="alert alert-info d-flex align-items-center mt-4">
+            <div class="alert alert-info d-flex align-items-center">
                 <div class="d-flex align-items-center me-auto">
                     <div class="spinner-border text-info me-3" role="status">
                         <span class="visually-hidden">Loading...</span>
