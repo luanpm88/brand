@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Broadcast::routes();
 
 // Default root
-Route::get('/', 'Client\HomeController@dashboard')->middleware(['auth', 'client']);
+Route::get('/', 'Client\HomeController@dashboard')->middleware(['auth', 'client', 'checkPlan']);
 
 // Larevel 8 default dashboard
 Route::get('/dashboard', function () {
