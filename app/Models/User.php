@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-use App\models\Service;
-use App\models\Payment;
-use App\models\Province;
-use App\models\District;
-use App\models\Ward;
+use App\Models\Service;
+use App\Models\Payment;
+use App\Models\Province;
+use App\Models\District;
+use App\Models\Ward;
 use App\Library\Facebook\Messenger;
 
 class User extends Authenticatable

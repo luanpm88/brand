@@ -14,9 +14,12 @@
                         <div class="ms-2">
                             <h4 class="m-0 font-weight-bold">{{ $page->data['name'] }}</h4>
                         </div>
-                        <div class="ms-auto">
-                          <a href="javascript:;" class="action">
+                        <div class="ms-auto d-flex align-items-center">
+                          <a href="javascript:;" class="action me-1">
                             <svg viewBox="0 0 36 36" class="a8c37x1j ms05siws hwsy1cff b7h9ocf4" height="28" width="28"><path d="M12.5 18A2.25 2.25 0 118 18a2.25 2.25 0 014.5 0zm7.75 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm5.5 2.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"></path></svg>
+                          </a>
+                          <a href="{{ action('Client\HomeController@dashboard') }}" class="action">
+                            <span data-feather="log-out" style="color: #333;width:20px"></span>
                           </a>
                         </div>
                     </div>
