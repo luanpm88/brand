@@ -59,7 +59,7 @@
                 Cấu hình thông tin căn bản cho thương hiệu của bạn để bắt đầu kinh doanh ngay hôm nay
               </p>
               <div class="d-grid gap-2">
-                <a href="javascript:;" class="btn btn-success stretched-link">Cấu hình Thương hiệu</a>
+                <a href="javascript:;" class="btn btn-success stretched-link coming_soon">Cấu hình Thương hiệu</a>
               </div>
             </div>
           </div>
