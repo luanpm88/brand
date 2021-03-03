@@ -4,7 +4,7 @@
             <a href="/" class="d-flex align-items-center text-decoration-none">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" style="fill: currentcolor;
                 color: rgb(222, 131, 0);" />
-                <span class=" display-5 fw-normal ms-2" style="font-family: 'Montserrat';color: rgb(107,115,129)!important">brand</span>
+                <span class=" display-5 fw-normal ms-2 mt-1" style="font-family: 'Comfortaa';color: rgb(107,115,129)!important;">brand</span>
             </a>
         </x-slot>
 
