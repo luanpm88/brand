@@ -50,7 +50,7 @@
                             <td class="fs-6 text-center">{{ $service->getUnit() }}</td>
                             <td class="fs-6 text-end fw-bold">{{ App\Helpers\Currency::formatNumber($service->price) }}<sup class="d">đ</sup></td>
                             <td class="text-end">
-                                <button class="btn btn-sm btn-secondary">Thay đổi</button>
+                                <button class="btn btn-sm btn-secondary coming_soon">Thay đổi</button>
                             </td>
                         </tr>
                     @endforeach
@@ -65,7 +65,7 @@
             <form class="card p-2">
                 <div class="input-group">
                 <input type="text" class="form-control" placeholder="Nhập mã giảm giá tại đây">
-                <button type="submit" class="btn btn-info">Áp dụng mã</button>
+                <button type="submit" class="btn btn-info coming_soon">Áp dụng mã</button>
                 </div>
             </form>
         </div>
