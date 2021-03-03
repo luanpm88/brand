@@ -27,8 +27,8 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
 
     // // Account
 	// Route::get('/account/brand', 'AccountController@brand');
-	// Route::post('/account/profile', 'AccountController@profile');
-    // Route::get('/account/profile', 'AccountController@profile');
+	Route::post('/account/profile', 'AccountController@profile');
+    Route::get('/account/profile', 'AccountController@profile');
 
     // Domain
 	// Route::get('/domain', 'DomainController@index');
@@ -97,8 +97,8 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
 
     // Account
 	Route::get('/account/brand', 'AccountController@brand');
-	Route::post('/account/profile', 'AccountController@profile');
-    Route::get('/account/profile', 'AccountController@profile');
+	// Route::post('/account/profile', 'AccountController@profile');
+    // Route::get('/account/profile', 'AccountController@profile');
 
     // Domain
 	Route::get('/domain', 'DomainController@index');
