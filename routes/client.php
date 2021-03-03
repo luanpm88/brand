@@ -19,7 +19,7 @@ Route::post('/facebook/webhooks', 'Client\MessageController@webhooks');
 
 Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['auth', 'client']], function () {
     // // Dashboard
-	// Route::get('/coming-soon', 'HomeController@comingSoon');
+	Route::get('/coming-soon', 'HomeController@comingSoon');
     // Route::get('/dashboard', 'HomeController@dashboard');
     Route::post('/wizad', 'HomeController@wizard');
     Route::get('/wizad', 'HomeController@wizard');
@@ -90,7 +90,7 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
 
 Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['auth', 'client', 'checkPlan']], function () {
 	// Dashboard
-	Route::get('/coming-soon', 'HomeController@comingSoon');
+	// Route::get('/coming-soon', 'HomeController@comingSoon');
     Route::get('/dashboard', 'HomeController@dashboard');
     // Route::post('/wizad', 'HomeController@wizard');
     // Route::get('/wizad', 'HomeController@wizard');
