@@ -32,6 +32,9 @@ class AccountController extends Controller
                 $path = $request->file('picture')
                     ->storeAs('user/' . $user->id, 'picture');
             }
+
+            $request->session()->flash('success', 'Cập nhật hồ sơ thành công');
+            return redirect()->action('Client\AccountController@profile');
         }
 
         // fill old request if exist
