@@ -1,7 +1,7 @@
 @extends('client.layouts.main')
 @section('content')
     <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-    <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-2">
           {{-- <li class="breadcrumb-item"><a href="#"><span data-feather="package"></span></a></li> --}}
