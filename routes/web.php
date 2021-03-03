@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Broadcast::routes();
 
+Route::get('/policy', function () {
+    return view('policy');
+});
+
 // Default root
 Route::get('/', 'Client\HomeController@dashboard')->middleware(['auth', 'client', 'checkPlan']);
 
