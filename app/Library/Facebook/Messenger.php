@@ -5,8 +5,8 @@ use App\Library\Facebook\Page;
 
 class Messenger
 {
-    public $appId='891398811623458';
-    public $appSecret='9f86dd56e21868ae49d4ce891c971645';
+    public $appId;
+    public $appSecret;
     public $accessToken;
     public $fb;
     public $userId;
@@ -14,6 +14,9 @@ class Messenger
     public function __construct($accessToken=null)
 	{
 		$this->accessToken = $accessToken;
+
+        $this->appId=env('FB_APP_ID');
+        $this->appSecret=env('FB_APP_SECRET');
 
         if ($this->accessToken) {
             $this->fb = new \Facebook\Facebook([
