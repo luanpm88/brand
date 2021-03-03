@@ -10,6 +10,18 @@ use App\Models\User;
 class DomainController extends Controller
 {
     /**
+     * Display a listing of the resource. 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        return view('client.domains.index', [
+            'user' => $request->user(),
+        ]);
+    }
+
+    /**
      * Check domain is available or not for purchasing.
      *
      * @return \Illuminate\View\View

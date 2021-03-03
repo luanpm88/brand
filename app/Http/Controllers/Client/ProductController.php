@@ -18,7 +18,6 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        \Auth::login(User::first());
         $lazadaConnection = $request->user()->getUserConnection('lazada');
 
         return view('client.products.index', [

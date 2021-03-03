@@ -71,8 +71,9 @@
       }
     </style>
 
-
-
+    <script>
+      var COMING_SOON_URL = '{{ action('Client\HomeController@comingSoon') }}';
+    </script>
     
     <!-- Custom styles for this template -->
     <link href="{{ url('/client/css/dashboard.css') }}" rel="stylesheet">
@@ -141,9 +142,13 @@
                 <span data-feather="user" class="me-1"></span> Tài khoản
               </a>
             </li>
-            <li><a class="dropdown-item" href="#"><span data-feather="key" class="me-1"></span> Đổi mật khẩu</a></li>
-            <li><a class="dropdown-item" href="#"><span data-feather="bell" class="me-1"></span> Thông báo</a></li>
-            <li><a class="dropdown-item" href="#"><span data-feather="credit-card" class="me-1"></span> Thanh toán</a></li>
+            <li>
+              <a class="dropdown-item coming_soon" href="#">
+                <span data-feather="key" class="me-1"></span> Đổi mật khẩu
+              </a>
+            </li>
+            <li><a class="dropdown-item coming_soon" href="#"><span data-feather="bell" class="me-1"></span> Thông báo</a></li>
+            <li><a class="dropdown-item coming_soon" href="#"><span data-feather="credit-card" class="me-1"></span> Thanh toán</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
               <form method="POST" action="{{ route('logout') }}">
@@ -170,25 +175,25 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link coming_soon" href="#">
                   <span data-feather="settings"></span>
                   Cấu hình chung
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ action('Client\DomainController@index') }}">
                   <span data-feather="at-sign"></span>
                   Tên miền & Lưu trữ
                 </a>
               </li>              
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link coming_soon" href="#">
                   <span data-feather="users"></span>
                   Khách hàng
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ action('Client\WebsiteController@index') }}">
                   <span data-feather="layout"></span>
                   Website của bạn
                 </a>
@@ -209,7 +214,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link coming_soon" href="#">
                   <span data-feather="file-text"></span>
                   Đơn hàng
                 </a>
@@ -230,7 +235,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ action('Client\ProductController@index') }}">
                   <span data-feather="shopping-bag"></span>
                   Kết nối sàn TMĐT
                 </a>
@@ -245,19 +250,19 @@
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ action('Client\AccountController@profile') }}">
                   <span data-feather="user"></span>
                   Tài khoản & Bảo mật
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link coming_soon" href="#">
                   <span data-feather="key"></span>
                   API Key
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link coming_soon" href="#">
                   <span data-feather="dollar-sign"></span>
                   Ví điện tử
                 </a>
@@ -272,13 +277,13 @@
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link coming_soon" href="#">
                   <span data-feather="file-text"></span>
                   Bán hàng
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link coming_soon" href="#">
                   <span data-feather="file-text"></span>
                   Lịch sử giao dịch
                 </a>

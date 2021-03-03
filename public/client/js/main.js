@@ -32,8 +32,21 @@ function addMaskLoading(text, callback, options) {
     });
 }
 
-function initJs() {
+function initJs(container) {
+    if (container == null) {
+        container = $('body');
+    }
     feather.replace();
+
+    // commin soon link
+    container.find('.coming_soon').on('click', function(e) {
+        e.preventDefault();
+        
+        var comingPopup = new Popup({
+            url: COMING_SOON_URL,
+        });
+        comingPopup.load();
+    });
 }
 
 function ready(method) {

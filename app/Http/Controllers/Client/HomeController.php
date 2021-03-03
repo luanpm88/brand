@@ -10,6 +10,16 @@ use App\Models\Service;
 class HomeController extends Controller
 {
     /**
+     * Coming soon popup.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function comingSoon(Request $request)
+    {
+        return view('client.home.comingSoon');
+    }
+
+    /**
      * Member dashboard.
      *
      * @return \Illuminate\View\View
@@ -18,11 +28,7 @@ class HomeController extends Controller
     {
         $user = $request->user();
 
-        if ($user->hasActivePlan()) {
-            return view('client.home.dashboard');
-        } else {
-            return view('client.home.welcome');
-        }
+        return view('client.home.dashboard');
     }
 
     /**
@@ -81,6 +87,10 @@ class HomeController extends Controller
         }
 
         // @website: domain registration
-        return view('client.website.domain');
+        if ($user->hasWizard()) {
+            return view('client.website.domain');
+        }
+
+        return view('client.home.welcome');
     }
 }
