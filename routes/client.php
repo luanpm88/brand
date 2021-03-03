@@ -64,11 +64,11 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
 	// Route::match(['get', 'post'], 'connection/lazada/sync', 'ConnectionController@lazadaSync');
 	// Route::post('connection/lazada/sync/close', 'ConnectionController@lazadaSyncClose');
 
-	// // District
-	// Route::get('districts/select-box', 'DistrictController@selectBox');
+	// District
+	Route::get('districts/select-box', 'DistrictController@selectBox');
 
-	// // Ward
-	// Route::get('wards/select-box', 'WardController@selectBox');
+	// Ward
+	Route::get('wards/select-box', 'WardController@selectBox');
 
 	// // Message
 	// Route::get('messages/order/{order_id}/shipping-fee', 'MessageController@shippingFee');
@@ -138,10 +138,10 @@ Route::group(['namespace' => 'Client', 'prefix' => 'client', 'middleware' => ['a
 	Route::post('connection/lazada/sync/close', 'ConnectionController@lazadaSyncClose');
 
 	// District
-	Route::get('districts/select-box', 'DistrictController@selectBox');
+	// Route::get('districts/select-box', 'DistrictController@selectBox');
 
 	// Ward
-	Route::get('wards/select-box', 'WardController@selectBox');
+	// Route::get('wards/select-box', 'WardController@selectBox');
 
 	// Message
 	Route::get('messages/order/{order_id}/shipping-fee', 'MessageController@shippingFee');
