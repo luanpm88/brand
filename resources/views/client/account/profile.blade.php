@@ -103,9 +103,11 @@
                             <div class="districts-box">
                                 <select name="district_id" class="form-select d-block w-100" id="state" required="">
                                 <option value="">Chọn...</option>
-                                @foreach($user->province->districts as $district)
-                                    <option value="{{ $district->id }}" {{ $user->district_id == $district->id ? 'selected' : '' }}>{{ $district->name }}</option>
-                                @endforeach
+                                @if ($user->province)
+                                    @foreach($user->province->districts as $district)
+                                        <option value="{{ $district->id }}" {{ $user->district_id == $district->id ? 'selected' : '' }}>{{ $district->name }}</option>
+                                    @endforeach
+                                @endif
                                 </select>
                             </div>
                             <div class="invalid-feedback">
@@ -116,9 +118,11 @@
                             <label class="form-label">Phường/Xã</label>
                             <div class="wards-box">
                                 <select name="ward_id" class="form-select d-block w-100" id="state">
+                                @if ($user->district)
                                     @foreach($user->district->wards as $ward)
-                                    <option value="{{ $ward->id }}" {{ $user->ward_id == $ward->id ? 'selected' : '' }}>{{ $ward->name }}</option>
-                                @endforeach
+                                        <option value="{{ $ward->id }}" {{ $user->ward_id == $ward->id ? 'selected' : '' }}>{{ $ward->name }}</option>
+                                    @endforeach
+                                @endif
                                 </select>
                             </div>
                             <div class="invalid-feedback">
