@@ -165,7 +165,7 @@
 
     <div class="container-fluid">
       <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
@@ -181,7 +181,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ action('Client\DomainController@index') }}">
+                <a class="nav-link" href="{{ action('Client\DomainController@index') }}" data-name="DomainController@index">
                   <span data-feather="at-sign"></span>
                   Tên miền & Lưu trữ
                 </a>
@@ -193,7 +193,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ action('Client\WebsiteController@index') }}">
+                <a class="nav-link" href="{{ action('Client\WebsiteController@index') }}" data-name="WebsiteController@index">
                   <span data-feather="layout"></span>
                   Website của bạn
                 </a>
@@ -208,7 +208,7 @@
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" data-name="ProductController@index" href="{{ action('Client\ProductController@index') }}">
+                <a class="nav-link" data-name="ProductController@index" data-name="ProductController@index" href="{{ action('Client\ProductController@index') }}">
                   <span data-feather="package"></span>
                   Sản phẩm
                 </a>
@@ -220,7 +220,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ action('Client\MessageController@index') }}">
+                <a class="nav-link" href="{{ action('Client\MessageController@index') }}"  data-name="MessageController@index">
                   <svg class="me-1" style="width:17px;height:17px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 800 800">
                     <radialGradient id="Gradient" cx="101.925" cy="809.0079" r="1.0896" gradientTransform="matrix(800 0 0 -799.9985 -81386 648000.75)" gradientUnits="userSpaceOnUse">
                      <stop offset="0" style="stop-color:#0099FF"/>
@@ -234,12 +234,6 @@
                   Messenger
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ action('Client\ProductController@index') }}">
-                  <span data-feather="shopping-bag"></span>
-                  Kết nối sàn TMĐT
-                </a>
-              </li>
             </ul>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -250,7 +244,7 @@
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" href="{{ action('Client\AccountController@profile') }}">
+                <a class="nav-link" href="{{ action('Client\AccountController@profile') }}" data-name="AccountController@profile">
                   <span data-feather="user"></span>
                   Tài khoản & Bảo mật
                 </a>

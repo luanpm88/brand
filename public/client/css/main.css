@@ -305,3 +305,15 @@ body {
 .coming_soon {
   opacity: 0.6;
 }
+.nav-link {
+  padding: .55rem 1rem;
+}
+/* .sidebar .nav-link {
+  color: rgba(255,255,255,0.8)!important;
+}
+.sidebar .nav-link .feather {
+  color: rgba(255,255,255,0.8)!important;
+}
+.sidebar-heading {
+  color: rgba(255,255,255,0.6)!important;
+} */
